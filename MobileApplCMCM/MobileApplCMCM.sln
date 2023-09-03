@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileAppClassLibrary", "MobileAppClassLibrary\MobileAppClassLibrary.csproj", "{151E8D8B-512E-4C69-A8B8-4235A76D1EE4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationCMCM", "ApplicationCMCM\ApplicationCMCM.csproj", "{066D605D-9EEF-462D-8A26-640BD44222B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationCMCM", "ApplicationCMCM\ApplicationCMCM.csproj", "{066D605D-9EEF-462D-8A26-640BD44222B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{151E8D8B-512E-4C69-A8B8-4235A76D1EE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{151E8D8B-512E-4C69-A8B8-4235A76D1EE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{151E8D8B-512E-4C69-A8B8-4235A76D1EE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{151E8D8B-512E-4C69-A8B8-4235A76D1EE4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{066D605D-9EEF-462D-8A26-640BD44222B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{066D605D-9EEF-462D-8A26-640BD44222B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{066D605D-9EEF-462D-8A26-640BD44222B7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
