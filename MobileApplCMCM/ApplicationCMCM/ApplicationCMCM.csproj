@@ -49,6 +49,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\account.png" />
+	  <None Remove="Resources\Images\add.png" />
+	  <None Remove="Resources\Images\addempty.png" />
+	  <None Remove="Resources\Images\call.png" />
+	  <None Remove="Resources\Images\camera.png" />
+	  <None Remove="Resources\Images\folder.png" />
+	  <None Remove="Resources\Images\location.png" />
+	  <None Remove="Resources\Images\logocmcm.png" />
+	  <None Remove="Resources\Images\map.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.3" />
@@ -56,8 +69,15 @@
 
 	<ItemGroup>
 	  <Folder Include="Pages\" />
-	  <Folder Include="MVVM\ViewModels\" />
-	  <Folder Include="MVVM\Views\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="MVVM\Views\RegisterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\CustomStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
