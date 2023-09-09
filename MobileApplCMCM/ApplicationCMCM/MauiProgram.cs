@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using ApplicationCMCM.MVVM.Views;
+using Microsoft.Extensions.Logging;
 
 namespace ApplicationCMCM
 {
@@ -18,6 +19,7 @@ namespace ApplicationCMCM
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+            builder.Services.AddSingleton<RegisterPage>();
 
             return builder.Build();
         }
