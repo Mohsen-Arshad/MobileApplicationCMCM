@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ApplicationCMCM.MVVM.Views.RegisterPage">
+    
+    <VerticalStackLayout VerticalOptions="Center" Margin="20,0,20,0" Spacing="20">
+        <Image Source="logocmcm.png"
+               HorizontalOptions="Center"
+               HeightRequest="80"
+               WidthRequest="200"/>
+        <Label Text="Create a new account"
+               TextColor="#101010"
+               FontSize="Large"
+               HorizontalOptions="Center"/>
+        <Label Text="In order to using the app,Please enter your information below to create a new account "
+               TextColor="LightSlateGrey"
+               FontSize="Small"
+               HorizontalTextAlignment="Center"
+               Margin="10"/>
+        <Entry x:Name="EntFirstName"
+               Placeholder="First Name"/>
+        <Entry x:Name="EntLastName"
+               Placeholder="Last Name"/>
+        <Entry x:Name="EntIdentificationNumber"
+               Placeholder="Identification Number"/>
+        <Entry x:Name="EntEmail"
+               Placeholder="Email"/>
+        <Entry x:Name="EntPassword"
+               Placeholder="Password"
+               IsPassword="True"/>
+
+        <Button x:Name="BtnRegister"
+                Text="Register Now"
+                HeightRequest="50"
+                FontSize="Medium"
+                Command="{Binding RegisterCommand}"
+                CommandParameter="{}"/>
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Label Text="Already have an account? "
+                   TextColor="#101010"
+                   FontSize="Medium"/>
+            <Label Text=" Sign In"
+                   FontSize="Medium"
+                   TextColor="#512bd4"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
