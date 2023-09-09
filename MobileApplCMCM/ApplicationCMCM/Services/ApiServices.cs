@@ -11,6 +11,14 @@ namespace ApplicationCMCM.Services;
 
 public class ApiServices
 {
+    RequestModel rqstModel = new();
+    List<RequestModel> listRequestModel = new();
+    HttpClient httpClient;
+
+    public ApiServices()
+    {
+        httpClient = new HttpClient();
+    }
 
     #region USER WITH EXCEPTION HANDLING
     //public async Task<bool> RegisterUser(RegisterModel registerModel)
@@ -111,10 +119,9 @@ public class ApiServices
     #region USER
     public async Task<bool> RegisterUser(RegisterModel registerModel)
     {
-        var httpclient = new HttpClient();
         var json = JsonConvert.SerializeObject(registerModel);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
-        var response = await httpclient.PostAsync(CustomConst.BaseUrl + "/Users/Register", content);
+        var response = await httpClient.PostAsync(CustomConst.BaseUrl + "/Users/Register", content);
 
         if (!response.IsSuccessStatusCode)
         {
@@ -126,7 +133,6 @@ public class ApiServices
     public async Task<bool> Login(LoginModel loginModel)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
-        var httpClient = new HttpClient();
         var json = JsonConvert.SerializeObject(loginModel);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
         var response = await httpClient.PostAsync(CustomConst.BaseUrl + "/Users/Login", content);
@@ -147,7 +153,6 @@ public class ApiServices
 
     public async Task<bool> UpdateUser(UserModel userModel)
     {
-        var httpClient = new HttpClient();
         httpClient = await UserValidation(httpClient);
         var json = JsonConvert.SerializeObject(userModel);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -162,7 +167,6 @@ public class ApiServices
 
     public async Task<bool> DeleteUser(int userId)
     {
-        var httpClient = new HttpClient();
         httpClient = await UserValidation(httpClient);
         var result = await httpClient.DeleteAsync(CustomConst.BaseUrl + "/Users/" + userId);
         if (!result.IsSuccessStatusCode)
@@ -176,7 +180,6 @@ public class ApiServices
     #region REQUESTS
     public async Task<RequestModel> GetRequest(int requestId)
     {
-        var httpClient = new HttpClient();
         httpClient = await UserValidation(httpClient);
         var response = await httpClient.GetStringAsync(CustomConst.BaseUrl + "/Requests/" + requestId);
         var request = JsonConvert.DeserializeObject<RequestModel>(response);
@@ -191,7 +194,11 @@ public class ApiServices
 
     public async Task<List<RequestModel>> GetAllRequests()
     {
-        var httpClient = new HttpClient();
+        if (listRequestModel?.Count > 0)
+        {
+            return listRequestModel;
+        }
+
         httpClient = await UserValidation(httpClient);
         var response = await httpClient.GetStringAsync(CustomConst.BaseUrl + "/Requests");
         var categories = JsonConvert.DeserializeObject<List<RequestModel>>(response);
@@ -206,7 +213,6 @@ public class ApiServices
 
     public async Task<bool> CreateRequest(RequestModel requestModel)
     {
-        var httpClient = new HttpClient();
         httpClient = await UserValidation(httpClient);
         var json = JsonConvert.SerializeObject(requestModel);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -222,7 +228,6 @@ public class ApiServices
 
     public async Task<bool> UpdateRequest(RequestModel requestModel)
     {
-        var httpClient = new HttpClient();
         httpClient = await UserValidation(httpClient);
         var json = JsonConvert.SerializeObject(requestModel);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -237,7 +242,6 @@ public class ApiServices
 
     public async Task<bool> DeleteRequest(int requestId)
     {
-        var httpClient = new HttpClient();
         httpClient = await UserValidation(httpClient);
         var result = await httpClient.DeleteAsync(CustomConst.BaseUrl + "/Requests/" + requestId);
         if (!result.IsSuccessStatusCode)
@@ -251,7 +255,6 @@ public class ApiServices
     #region CATEGORIES
     public async Task<List<CategoryModel>> GetCategories()
     {
-        var httpClient = new HttpClient();
         httpClient = await UserValidation(httpClient);
         var response = await httpClient.GetStringAsync(CustomConst.BaseUrl + "/Categories");
         var categories = JsonConvert.DeserializeObject<List<CategoryModel>>(response);

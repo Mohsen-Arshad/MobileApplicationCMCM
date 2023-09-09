@@ -1,4 +1,6 @@
-﻿using ApplicationCMCM.MVVM.Views;
+﻿using ApplicationCMCM.MVVM.ViewModels;
+using ApplicationCMCM.MVVM.Views;
+using ApplicationCMCM.Services;
 using Microsoft.Extensions.Logging;
 
 namespace ApplicationCMCM
@@ -19,7 +21,9 @@ namespace ApplicationCMCM
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+            builder.Services.AddSingleton<ApiServices>();
             builder.Services.AddSingleton<RegisterPage>();
+            builder.Services.AddSingleton<RegisterPageViewModel>();
 
             return builder.Build();
         }

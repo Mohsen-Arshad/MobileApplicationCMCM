@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ApplicationCMCM.MVVM.Views.RegisterPage">
+             xmlns:viewmodel ="clr-namespace:ApplicationCMCM.MVVM.ViewModels"
+             x:DataType="viewmodel:RegisterPageViewModel"
+             x:Class="ApplicationCMCM.MVVM.Views.RegisterPage"
+             Title="{Binding Title}">
     
     <VerticalStackLayout VerticalOptions="Center" Margin="20,0,20,0" Spacing="20">
         <Image Source="logocmcm.png"
@@ -17,15 +20,15 @@
                FontSize="Small"
                HorizontalTextAlignment="Center"
                Margin="10"/>
-        <Entry x:Name="EntFirstName"
+        <Entry Text="{Binding Register.FirstName}"
                Placeholder="First Name"/>
-        <Entry x:Name="EntLastName"
+        <Entry Text="{Binding Register.LastName}"
                Placeholder="Last Name"/>
-        <Entry x:Name="EntIdentificationNumber"
+        <Entry Text="{Binding Register.IdentificationNumber}"
                Placeholder="Identification Number"/>
-        <Entry x:Name="EntEmail"
+        <Entry Text="{Binding Register.EmailAddress}"
                Placeholder="Email"/>
-        <Entry x:Name="EntPassword"
+        <Entry Text="{Binding Register.Password}"
                Placeholder="Password"
                IsPassword="True"/>
 
@@ -33,7 +36,7 @@
                 Text="Register Now"
                 HeightRequest="50"
                 FontSize="Medium"
-                Command="{Binding RegisterCommand}"
+                Command="{Binding RegisterUserCommand}"
                 CommandParameter="{}"/>
         <HorizontalStackLayout HorizontalOptions="Center">
             <Label Text="Already have an account? "
