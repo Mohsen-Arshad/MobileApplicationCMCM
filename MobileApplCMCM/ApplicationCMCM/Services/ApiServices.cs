@@ -130,7 +130,7 @@ public class ApiServices
         return true;
     }
 
-    public async Task<bool> Login(LoginModel loginModel)
+    public async Task<bool> LoginUser(LoginModel loginModel)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
         var json = JsonConvert.SerializeObject(loginModel);
