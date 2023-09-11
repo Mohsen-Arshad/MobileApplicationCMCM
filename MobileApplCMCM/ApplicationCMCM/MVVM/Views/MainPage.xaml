@@ -3,10 +3,161 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ApplicationCMCM.MVVM.Views.MainPage"
              Title="MainPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid RowDefinitions="0.05*,0.3*,0.5*,0.05*" Padding="10">
+        <Grid Grid.Row="0" ColumnDefinitions="*,*,*">
+            <Image Grid.Column="0" 
+                   Grid.ColumnSpan="2" 
+                   Source="logocmcm.png"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="End"
+                   Margin="0,0,-20,0"/>
+
+            <Image Grid.Column="2" 
+                   Source="account.png" 
+                   HorizontalOptions="End" 
+                   HeightRequest="60"
+                   Margin="0,0,-10,0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command=""/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+
+        <CarouselView Grid.Row="1" EmptyView="Loading,Please Wait...">
+            
+        </CarouselView>
+
+        <Grid Grid.Row="2" 
+              RowDefinitions="*,*"
+              ColumnDefinitions="*,*"
+              RowSpacing="20" 
+              ColumnSpacing="20"
+              HeightRequest="380">
+
+            <Frame Grid.Row="0" Grid.Column="0" CornerRadius="20">
+                <Frame.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Offset="0" Color="#7a7e82"/>
+                        <GradientStop Offset="0.25" Color="#8a8e92"/>
+                        <GradientStop Offset="0.5" Color="#95999c"/>
+                        <GradientStop Offset="0.75" Color="#acafb1"/>
+                    </LinearGradientBrush>
+                </Frame.Background>
+                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" >
+                    <Label Text="MY REQUESTS"
+                           FontSize="Medium"
+                           TextColor="GhostWhite" HorizontalOptions="Center"/>
+                    <Label Text="Reimbursements," 
+                           HorizontalOptions="Center" 
+                           Margin="0,10,0,0"
+                           TextColor="GhostWhite"/>
+                    <Label Text="Certificats, ..." 
+                           HorizontalOptions="Center" 
+                           TextColor="GhostWhite"/>
+                    <Image Source="folder.png"
+                           HeightRequest="50"
+                           HorizontalOptions="Center"
+                           Margin="0,15,0,0"/>
+                </VerticalStackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <Frame Grid.Row="0" Grid.Column="1" CornerRadius="20">
+                <Frame.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Offset="0" Color="#3D14B0"/>
+                        <GradientStop Offset="0.25" Color="#4517C8"/>
+                        <GradientStop Offset="0.5" Color="#4E1AE3"/>
+                        <GradientStop Offset="0.75" Color="#6334E8"/>
+                    </LinearGradientBrush>
+                </Frame.Background>
+                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label Text="PHARMACIES"
+                           FontSize="Medium"
+                           TextColor="GhostWhite" HorizontalOptions="Center"/>
+                    <Label Text="Who is on duty" 
+                           HorizontalOptions="Center" 
+                           Margin="0,10,0,0"
+                           TextColor="GhostWhite"/>
+                    <Image Source="location.png"
+                           HeightRequest="50"
+                           HorizontalOptions="Center"
+                           Margin="0,30,0,0"/>
+                </VerticalStackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <Frame Grid.Row="1" Grid.Column="0" CornerRadius="20">
+                <Frame.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Offset="0" Color="#c30402"/>
+                        <GradientStop Offset="0.25" Color="#f10403"/>
+                        <GradientStop Offset="0.5" Color="#fd1c1a"/>
+                        <GradientStop Offset="0.75" Color="#fd5250"/>
+                    </LinearGradientBrush>
+                </Frame.Background>
+                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label Text="CMCM-ASSISTANCE"
+                           TextColor="GhostWhite" HorizontalOptions="Center"/>
+                    <Label Text="Emergencies Abroad" 
+                           HorizontalOptions="Center" 
+                           Margin="0,5,0,0"
+                           TextColor="GhostWhite"/>
+                    <Label Text="24/7" 
+                           HorizontalOptions="Center"
+                           TextColor="GhostWhite"/>
+                    <Image Source="call.png"
+                           HeightRequest="50"
+                           HorizontalOptions="Center"
+                           Margin="0,20,0,0"/>
+                </VerticalStackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <Frame Grid.Row="1" Grid.Column="1" CornerRadius="20">
+                <Frame.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Offset="0" Color="#2489bf"/>
+                        <GradientStop Offset="0.25" Color="#299bd7"/>
+                        <GradientStop Offset="0.5" Color="#38a2da"/>
+                        <GradientStop Offset="0.75" Color="#4dabde"/>
+                    </LinearGradientBrush>
+                </Frame.Background>
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="REQUEST"
+                           FontSize="Medium"
+                           TextColor="GhostWhite" HorizontalOptions="Center"/>
+                    <Label Text="Reimbursements," 
+                           HorizontalOptions="Center" 
+                           Margin="0,5,0,0"
+                           TextColor="GhostWhite"/>
+                    <Label Text="Certificates, ..." 
+                           HorizontalOptions="Center"
+                           TextColor="GhostWhite"/>
+                    <Image Source="add.png"
+                           HeightRequest="50"
+                           HorizontalOptions="Center"
+                           Margin="0,25,0,0"/>
+                </VerticalStackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+
+        </Grid>
+
+        <Label Text="MIR SINN DO.FIR JIDDEREEN."
+               FontSize="Large"
+               TextColor="{StaticResource Primary}"
+               Grid.Row="3" 
+               HorizontalOptions="Center" 
+               VerticalOptions="Center"/>
+
+    </Grid>
 </ContentPage>
