@@ -1,4 +1,7 @@
-﻿namespace ApplicationCMCM;
+﻿using ApplicationCMCM.MVVM.ViewModels;
+using ApplicationCMCM.MVVM.Views;
+
+namespace ApplicationCMCM;
 
 public partial class App : Application
 {
