@@ -22,9 +22,9 @@
             <Style BasedOn="{StaticResource BaseStyle}" TargetType="ShellItem" ApplyToDerivedTypes="True" />
         </ResourceDictionary>
     </Shell.Resources>
-    
+
     <ShellContent
-        Title="Home"
+        Title="Register"
         ContentTemplate="{DataTemplate local:RegisterPage}"
         Route="RegisterPage" />
 
