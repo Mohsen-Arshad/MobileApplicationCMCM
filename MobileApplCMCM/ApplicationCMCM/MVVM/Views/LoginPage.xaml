@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:ApplicationCMCM.MVVM.ViewModels"
+             x:DataType="viewmodel:LoginPageViewModel"
+             x:Class="ApplicationCMCM.MVVM.Views.LoginPage"
+             Title="{Binding Title}">
+    <VerticalStackLayout VerticalOptions="Center" Margin="20,0,20,0" Spacing="20">
+        <Image Source="logocmcm.png"
+               HorizontalOptions="Center"
+               HeightRequest="80"
+               WidthRequest="200"/>
+        <Label 
+            Text="Login to your account"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="Large"
+            TextColor="#101010"/>
+
+        <Entry Text="{Binding Login.EmailAddress}"
+               Placeholder="Email"/>
+        <Entry Text="{Binding Login.Password}"
+               Placeholder="Password"
+               IsPassword="True"/>
+
+        <Button Text="Log In"
+                HeightRequest="50"
+                FontSize="Medium"
+                Command="{Binding LoginCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Style="{StaticResource ButtonOutline}"/>
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center"/>
+
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Label Text="Don't you have any account? "
+                   FontSize="Medium"
+                   TextColor="{StaticResource LabelText}"/>
+            <Label Text="Register"
+                   FontSize="Medium"
+                   TextColor="{StaticResource PrimaryDark}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackToRegisterPageCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
