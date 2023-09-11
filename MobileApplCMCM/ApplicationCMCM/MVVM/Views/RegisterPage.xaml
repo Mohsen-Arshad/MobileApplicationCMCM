@@ -12,11 +12,11 @@
                HeightRequest="80"
                WidthRequest="200"/>
         <Label Text="Create a new account"
-               TextColor="#101010"
+               TextColor="{StaticResource LabelText}"
                FontSize="Large"
                HorizontalOptions="Center"/>
         <Label Text="In order to using the app,Please enter your information below to create a new account "
-               TextColor="LightSlateGrey"
+               TextColor="{StaticResource LabelText}"
                FontSize="Small"
                HorizontalTextAlignment="Center"
                Margin="10"/>
@@ -37,14 +37,25 @@
                 HeightRequest="50"
                 FontSize="Medium"
                 Command="{Binding RegisterUserCommand}"
-                CommandParameter="{}"/>
+                IsEnabled="{Binding IsNotBusy}"
+                Style="{StaticResource ButtonOutline}"/>
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center"/>
+
         <HorizontalStackLayout HorizontalOptions="Center">
             <Label Text="Already have an account? "
-                   TextColor="#101010"
+                   TextColor="{StaticResource LabelText}"
                    FontSize="Medium"/>
             <Label Text=" Sign In"
                    FontSize="Medium"
-                   TextColor="#512bd4"/>
+                   TextColor="{StaticResource PrimaryDark}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToLoginPageCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
