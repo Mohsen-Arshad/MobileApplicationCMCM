@@ -22,8 +22,15 @@ namespace ApplicationCMCM
 		builder.Logging.AddDebug();
 #endif
             builder.Services.AddSingleton<ApiServices>();
+
             builder.Services.AddSingleton<RegisterPage>();
             builder.Services.AddSingleton<RegisterPageViewModel>();
+
+            builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddSingleton<LoginPageViewModel>();
+
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<MainPageViewModel>();
 
             return builder.Build();
         }
