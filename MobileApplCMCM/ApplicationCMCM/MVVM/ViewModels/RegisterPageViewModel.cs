@@ -1,4 +1,5 @@
 ﻿using ApplicationCMCM.MVVM.Models;
+using ApplicationCMCM.MVVM.Views;
 using ApplicationCMCM.Services;
 using CommunityToolkit.Mvvm.Input;
 using System.Diagnostics;
@@ -8,21 +9,15 @@ namespace ApplicationCMCM.MVVM.ViewModels;
 
 public partial class RegisterPageViewModel : BaseViewModel
 {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string IdentificationNumber { get; set; }
-    public string EmailAddress { get; set; }
-    public string Password { get; set; }
-
     private readonly ApiServices _apiServices;
 
     public RegisterModel Register { get; set; } = new RegisterModel();
 
     public RegisterPageViewModel(ApiServices apiServices)
     {
-        Title = "Register CMCM";
+        Title = "Register";
         _apiServices = apiServices;
-        
+
     }
 
     [RelayCommand]
@@ -37,6 +32,15 @@ public partial class RegisterPageViewModel : BaseViewModel
         {
             IsBusy = true;
             var result = await _apiServices.RegisterUser(Register);
+            if (result)
+            {
+                // go to login page
+                await Shell.Current.GoToAsync($"{nameof(LoginPage)}");
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Error", $"Unable to create user", "Ok");
+            }
         }
         catch (Exception ex)
         {
@@ -47,5 +51,11 @@ public partial class RegisterPageViewModel : BaseViewModel
         {
             IsBusy = false;
         }
+    }
+
+    [RelayCommand]
+    async Task GoToLoginPageAsync()
+    {
+        await Shell.Current.GoToAsync(nameof(LoginPage));
     }
 }
