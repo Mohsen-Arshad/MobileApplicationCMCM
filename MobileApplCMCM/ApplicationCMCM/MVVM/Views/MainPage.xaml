@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:ApplicationCMCM.MVVM.ViewModels"
+             x:DataType="viewmodel:MainPageViewModel"
              x:Class="ApplicationCMCM.MVVM.Views.MainPage"
-             Title="MainPage">
+             Title="{Binding Title}">
+    
     <Grid RowDefinitions="0.05*,0.3*,0.5*,0.05*" Padding="10">
         <Grid Grid.Row="0" ColumnDefinitions="*,*,*">
             <Image Grid.Column="0" 
@@ -18,7 +21,7 @@
                    HeightRequest="60"
                    Margin="0,0,-10,0">
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command=""/>
+                    <TapGestureRecognizer Command="{Binding GoToUserPanelCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
         </Grid>
@@ -35,6 +38,9 @@
               HeightRequest="380">
 
             <Frame Grid.Row="0" Grid.Column="0" CornerRadius="20">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToUserRequestsCommand}"/>
+                </Frame.GestureRecognizers>
                 <Frame.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Offset="0" Color="#7a7e82"/>
@@ -59,9 +65,6 @@
                            HorizontalOptions="Center"
                            Margin="0,15,0,0"/>
                 </VerticalStackLayout>
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{}"/>
-                </Frame.GestureRecognizers>
             </Frame>
 
             <Frame Grid.Row="0" Grid.Column="1" CornerRadius="20">
@@ -87,7 +90,7 @@
                            Margin="0,30,0,0"/>
                 </VerticalStackLayout>
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{}"/>
+                    <TapGestureRecognizer Command="{Binding GoToPharmaciesCommand}"/>
                 </Frame.GestureRecognizers>
             </Frame>
 
@@ -115,9 +118,9 @@
                            HorizontalOptions="Center"
                            Margin="0,20,0,0"/>
                 </VerticalStackLayout>
-                <Frame.GestureRecognizers>
+                <!--<Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{}"/>
-                </Frame.GestureRecognizers>
+                </Frame.GestureRecognizers>-->
             </Frame>
 
             <Frame Grid.Row="1" Grid.Column="1" CornerRadius="20">
@@ -146,7 +149,7 @@
                            Margin="0,25,0,0"/>
                 </VerticalStackLayout>
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{}"/>
+                    <TapGestureRecognizer Command="{Binding GoToCategoriesCommand}"/>
                 </Frame.GestureRecognizers>
             </Frame>
 
