@@ -23,14 +23,26 @@ namespace ApplicationCMCM
 #endif
             builder.Services.AddSingleton<ApiServices>();
 
+            // Views
             builder.Services.AddSingleton<RegisterPage>();
-            builder.Services.AddSingleton<RegisterPageViewModel>();
-
             builder.Services.AddSingleton<LoginPage>();
-            builder.Services.AddSingleton<LoginPageViewModel>();
-
             builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<UserRequestsPage>();
+            builder.Services.AddSingleton<PharmaciesPage>();
+            builder.Services.AddSingleton<UserPanelPage>();
+            builder.Services.AddSingleton<CategoriesPage>();
+            builder.Services.AddTransient<RequestPage>();
+
+            // ViewModels
+            builder.Services.AddSingleton<RegisterPageViewModel>();
+            builder.Services.AddSingleton<LoginPageViewModel>();
             builder.Services.AddSingleton<MainPageViewModel>();
+            builder.Services.AddSingleton<UserRequestsPageViewModel>();
+            builder.Services.AddSingleton<PharmaciesPageViewModel>();
+            builder.Services.AddSingleton<UserPanelPageViewModel>();
+            builder.Services.AddSingleton<CategoriesPageViewModel>();
+            builder.Services.AddTransient<RequestPageViewModel>();
+
 
             return builder.Build();
         }
