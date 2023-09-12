@@ -118,9 +118,9 @@
                            HorizontalOptions="Center"
                            Margin="0,20,0,0"/>
                 </VerticalStackLayout>
-                <!--<Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{}"/>
-                </Frame.GestureRecognizers>-->
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CallEmergenciesCommand}"/>
+                </Frame.GestureRecognizers>
             </Frame>
 
             <Frame Grid.Row="1" Grid.Column="1" CornerRadius="20">
