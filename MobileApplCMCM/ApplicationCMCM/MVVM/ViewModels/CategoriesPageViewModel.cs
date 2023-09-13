@@ -1,4 +1,5 @@
 ﻿using ApplicationCMCM.MVVM.Models;
+using ApplicationCMCM.MVVM.Views;
 using ApplicationCMCM.Services;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
@@ -15,7 +16,7 @@ public partial class CategoriesPageViewModel : BaseViewModel
 
     public CategoriesPageViewModel(ApiServices apiServices)
     {
-        Title = "Categories";
+        Title = "Request Type";
         _apiServices = apiServices;
         GetAllCategoriesCommand.Execute(this);
     }
@@ -52,5 +53,20 @@ public partial class CategoriesPageViewModel : BaseViewModel
         {
             IsBusy = false;
         }
+    }
+
+    [RelayCommand]
+    async Task GoToRequestPage(CategoryModel categoryModel)
+    {
+        if (categoryModel is null)
+        {
+            return;
+        }
+
+        await Shell.Current.GoToAsync($"{nameof(RequestPage)}", true,
+            new Dictionary<string, object>
+            {
+                { "Category" , categoryModel }
+            });
     }
 }

@@ -1,5 +1,15 @@
-﻿namespace ApplicationCMCM.MVVM.ViewModels;
+﻿using ApplicationCMCM.MVVM.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
 
-public class RequestPageViewModel : BaseViewModel
+namespace ApplicationCMCM.MVVM.ViewModels;
+
+[QueryProperty("Category", "Category")]
+public partial class RequestPageViewModel : BaseViewModel
 {
+    [ObservableProperty]
+    CategoryModel category;
+    public RequestPageViewModel()
+    {
+        
+    }
 }
