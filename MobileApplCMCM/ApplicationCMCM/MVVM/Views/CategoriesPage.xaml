@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:ApplicationCMCM.MVVM.Models"
+             xmlns:viewmodel="clr-namespace:ApplicationCMCM.MVVM.ViewModels"
+             x:DataType="viewmodel:CategoriesPageViewModel"
              x:Class="ApplicationCMCM.MVVM.Views.CategoriesPage"
-             Title="CategoriesPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="{Binding Title}">
+
+    <CollectionView ItemsSource="{Binding Categories}"
+                    ItemsLayout="VerticalGrid, 2">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="model:CategoryModel">
+                <Grid Padding="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="80" />
+                    </Grid.ColumnDefinitions>
+                    <VerticalStackLayout>
+                        <Image Source="{Binding CategoryImage}"
+                           HeightRequest="80"
+                           WidthRequest="80"/>
+                        <Label Text="{Binding CategoryName}"
+                           FontSize="Medium"
+                           HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
 </ContentPage>
