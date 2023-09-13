@@ -7,30 +7,41 @@
              x:Class="ApplicationCMCM.MVVM.Views.CategoriesPage"
              Title="{Binding Title}">
 
-    <CollectionView ItemsSource="{Binding Categories}"
-                    ItemsLayout="VerticalGrid, 2">
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="model:CategoryModel">
-                <Grid Padding="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="35" />
-                        <RowDefinition Height="35" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="80" />
-                    </Grid.ColumnDefinitions>
-                    <VerticalStackLayout>
-                        <Image Source="{Binding CategoryImage}"
-                           HeightRequest="80"
-                           WidthRequest="80"/>
-                        <Label Text="{Binding CategoryName}"
-                           FontSize="Medium"
-                           HorizontalOptions="Center"/>
-                    </VerticalStackLayout>
-                </Grid>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+    <Grid RowDefinitions="0.1*,0.9*" RowSpacing="5">
+        <Label Text="Please chose a category"
+               Grid.Row="0"
+               FontSize="Medium"
+               HorizontalOptions="Center"/>
+        
+        <CollectionView ItemsSource="{Binding Categories}"
+                        ItemsLayout="VerticalGrid, 2"
+                        Grid.Row="1">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:CategoryModel">
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="35" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70" />
+                            <ColumnDefinition Width="80" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <Frame Style="{StaticResource CardView}">
+                            <VerticalStackLayout>
+                                <Image Source="{Binding CategoryImage}"
+                                       HeightRequest="80"
+                                       WidthRequest="80"/>
+                                <Label Text="{Binding CategoryName}"
+                                       FontSize="Medium"
+                                       HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 
 </ContentPage>

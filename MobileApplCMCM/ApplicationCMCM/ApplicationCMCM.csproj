@@ -49,23 +49,23 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\abroad.svg.svg" />
+	  <None Remove="Resources\Images\abroad.svg" />
 	  <None Remove="Resources\Images\account.png" />
 	  <None Remove="Resources\Images\add.png" />
 	  <None Remove="Resources\Images\addempty.png" />
 	  <None Remove="Resources\Images\call.png" />
 	  <None Remove="Resources\Images\camera.png" />
-	  <None Remove="Resources\Images\certificate.svg.svg" />
-	  <None Remove="Resources\Images\dentalcare.svg.svg" />
+	  <None Remove="Resources\Images\certificate.svg" />
+	  <None Remove="Resources\Images\dentalcare.svg" />
 	  <None Remove="Resources\Images\folder.png" />
-	  <None Remove="Resources\Images\hospital.svg.svg" />
+	  <None Remove="Resources\Images\hospital.svg" />
 	  <None Remove="Resources\Images\location.png" />
 	  <None Remove="Resources\Images\logocmcm.png" />
 	  <None Remove="Resources\Images\map.png" />
-	  <None Remove="Resources\Images\miscellaneous.svg.svg" />
-	  <None Remove="Resources\Images\optical.svg.svg" />
-	  <None Remove="Resources\Images\orthopedics.svg.svg" />
-	  <None Remove="Resources\Images\osteopathy.svg.svg" />
+	  <None Remove="Resources\Images\miscellaneous.svg" />
+	  <None Remove="Resources\Images\optical.svg" />
+	  <None Remove="Resources\Images\orthopedics.svg" />
+	  <None Remove="Resources\Images\osteopathy.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
