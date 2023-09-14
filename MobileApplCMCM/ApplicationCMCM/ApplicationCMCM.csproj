@@ -52,6 +52,7 @@
 	  <None Remove="Resources\Images\abroad.svg" />
 	  <None Remove="Resources\Images\account.png" />
 	  <None Remove="Resources\Images\add.png" />
+	  <None Remove="Resources\Images\add.svg" />
 	  <None Remove="Resources\Images\addempty.png" />
 	  <None Remove="Resources\Images\call.png" />
 	  <None Remove="Resources\Images\camera.png" />
