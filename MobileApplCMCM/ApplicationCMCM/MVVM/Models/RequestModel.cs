@@ -14,5 +14,8 @@ public class RequestModel
     public string RequestStatus { get; set; }
     public bool IsComplete { get; set; }
     public bool IsArchived { get; set; }
-    public byte[] FileData { get; set; }
+    public Stream FileData { get; set; }
+    public string ContentType { get; set; }
+    public string FileName { get; set; }
+    public string CategoryName { get; set; }
 }

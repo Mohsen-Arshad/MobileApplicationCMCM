@@ -2,6 +2,9 @@
 using ApplicationCMCM.MVVM.Views;
 using ApplicationCMCM.Services;
 using Microsoft.Extensions.Logging;
+using Mopups.Hosting;
+using Mopups.Interfaces;
+using Mopups.Services;
 
 namespace ApplicationCMCM
 {
@@ -12,6 +15,7 @@ namespace ApplicationCMCM
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .ConfigureMopups()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -22,6 +26,7 @@ namespace ApplicationCMCM
 		builder.Logging.AddDebug();
 #endif
             builder.Services.AddSingleton<ApiServices>();
+            builder.Services.AddSingleton<IPopupNavigation>(MopupService.Instance);
 
             // Views
             builder.Services.AddSingleton<RegisterPage>();
