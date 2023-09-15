@@ -39,7 +39,7 @@ public partial class RegisterPageViewModel : BaseViewModel
             }
             else
             {
-                await Shell.Current.DisplayAlert("Error", $"Unable to create user", "Ok");
+                await Shell.Current.DisplayAlert("Error", $"Unable to create request", "Ok");
             }
         }
         catch (Exception ex)
