@@ -5,7 +5,6 @@ using System.Text;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Net.Http.Headers;
-using System.Net.Http;
 
 namespace ApplicationCMCM.Services;
 
@@ -214,15 +213,33 @@ public class ApiServices
     public async Task<bool> CreateRequest(RequestModel requestModel)
     {
         httpClient = await UserValidation(httpClient);
-        var json = JsonConvert.SerializeObject(requestModel);
-        var content = new StringContent(json, Encoding.UTF8, "application/json");
-        var response = await httpClient.PostAsync(CustomConst.BaseUrl + "/Requests", content);
-
-        if (!response.IsSuccessStatusCode)
+        using (var formData = new MultipartFormDataContent())
         {
-            return false;
+            formData.Add(new StringContent(requestModel.CategoryId.ToString()), "CategoryId");
+            formData.Add(new StringContent(requestModel.Subject), "Subject");
+            formData.Add(new StringContent(requestModel.RequestComment), "RequestComment");
+
+            var fileContent = new StreamContent(requestModel.FileData);
+            fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+            {
+                Name = "DocFile",
+                FileName = requestModel.FileName
+            };
+
+            fileContent.Headers.ContentType = new MediaTypeHeaderValue(requestModel.ContentType);
+            formData.Add(fileContent);
+
+            var response = await httpClient.PostAsync(CustomConst.BaseUrl + "/Requests", formData);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return false;
+            }
+            return true;
         }
-        return true;
+
+        //var json = JsonConvert.SerializeObject(formData);
+        //var content = new MultipartFormDataContent(json);
     }
 
 
