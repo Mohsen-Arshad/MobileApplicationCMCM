@@ -56,8 +56,10 @@
 	  <None Remove="Resources\Images\addempty.png" />
 	  <None Remove="Resources\Images\call.png" />
 	  <None Remove="Resources\Images\camera.png" />
+	  <None Remove="Resources\Images\camera.svg" />
 	  <None Remove="Resources\Images\certificate.svg" />
 	  <None Remove="Resources\Images\dentalcare.svg" />
+	  <None Remove="Resources\Images\filepick.svg" />
 	  <None Remove="Resources\Images\folder.png" />
 	  <None Remove="Resources\Images\hospital.svg" />
 	  <None Remove="Resources\Images\location.png" />
@@ -72,6 +74,7 @@
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Mopups" Version="1.1.1" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.3" />
 	</ItemGroup>
@@ -91,6 +94,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="MVVM\Views\PharmaciesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MVVM\Views\PopupPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="MVVM\Views\RegisterPage.xaml">
