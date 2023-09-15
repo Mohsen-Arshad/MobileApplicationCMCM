@@ -1,5 +1,6 @@
 ﻿using ApplicationCMCM.MVVM.Models;
 using ApplicationCMCM.Services;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -39,6 +40,35 @@ public partial class UserRequestsPageViewModel : BaseViewModel
 
             foreach (var request in uRequests)
             {
+                switch (request.CategoryId)
+                {
+                    case 1:
+                        request.CategoryName = "Dental Care";
+                        break;
+                    case 2:
+                        request.CategoryName = "Hospital";
+                        break;
+                    case 3:
+                        request.CategoryName = "Optical";
+                        break;
+                    case 4:
+                        request.CategoryName = "Orthopedics";
+                        break;
+                    case 5:
+                        request.CategoryName = "Abroad";
+                        break;
+                    case 6:
+                        request.CategoryName = "Miscellaneous";
+                        break;
+                    case 7:
+                        request.CategoryName = "Certificate";
+                        break;
+                    case 8:
+                        request.CategoryName = "Osteopathy";
+                        break;
+                    default:
+                        break;
+                }
                 UserRequests.Add(request);
             }
         }
@@ -51,5 +81,11 @@ public partial class UserRequestsPageViewModel : BaseViewModel
         {
             IsBusy = false;
         }
+    }
+
+    [RelayCommand]
+    async Task BackToMainMenu()
+    {
+        await Shell.Current.GoToAsync("..");
     }
 }

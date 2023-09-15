@@ -12,8 +12,7 @@
                    Grid.ColumnSpan="2" 
                    Source="logocmcm.png"
                    VerticalOptions="Center" 
-                   HorizontalOptions="End"
-                   Margin="0,0,-20,0"/>
+                   HorizontalOptions="End"/>
 
             <Image Grid.Column="2" 
                    Source="account.png" 
