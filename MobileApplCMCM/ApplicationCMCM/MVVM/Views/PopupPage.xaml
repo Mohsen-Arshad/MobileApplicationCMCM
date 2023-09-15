@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mopups:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+                  xmlns:mopupsanim="clr-namespace:Mopups.Animations;assembly=Mopups"
+                  xmlns:viewmodel="clr-namespace:ApplicationCMCM.MVVM.ViewModels"
+                  x:DataType="viewmodel:PopupPageViewModel"
+                  x:Class="ApplicationCMCM.MVVM.Views.PopupPage"
+                  Title="PopupPage"
+                  CloseWhenBackgroundIsClicked="True"
+                  BackgroundColor="#80000000">
+
+    <mopups:PopupPage.Animation>
+        <mopupsanim:ScaleAnimation DurationIn="700"
+                                   EasingIn="BounceOut"
+                                   PositionIn="Bottom"
+                                   PositionOut="Center"
+                                   ScaleIn="1"
+                                   ScaleOut="0.7" />
+    </mopups:PopupPage.Animation>
+
+    <ScrollView>
+        <Border WidthRequest="200"
+                HeightRequest="150"
+                BackgroundColor="White"
+                StrokeThickness="2">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="30,0,0,30" />
+            </Border.StrokeShape>
+            <Grid ColumnDefinitions="*,*"
+                  VerticalOptions="Center"
+                  HorizontalOptions="Center"
+                  ColumnSpacing="40">
+                <VerticalStackLayout HorizontalOptions="Center"
+                                     Grid.Column="0"
+                                     Spacing="5">
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding PickDocumnetCommand}" />
+                    </VerticalStackLayout.GestureRecognizers>
+                    <Frame CornerRadius="30"
+                           WidthRequest="60"
+                           HeightRequest="60">
+
+                        <Image Source="filepick.svg"
+                               WidthRequest="40"
+                               HeightRequest="40" />
+                    </Frame>
+                    <Label Text="Files"
+                           FontSize="Medium"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+                <VerticalStackLayout HorizontalOptions="Center"
+                                     Grid.Column="1"
+                                     Spacing="5">
+                    <Frame CornerRadius="30"
+                           WidthRequest="60"
+                           HeightRequest="60">
+                        <Image Source="camera.svg"
+                               WidthRequest="50"
+                               HeightRequest="50" />
+                    </Frame>
+                    <Label Text="Camera"
+                           FontSize="Medium"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+    </ScrollView>
+</mopups:PopupPage>
