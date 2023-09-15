@@ -9,9 +9,4 @@ public partial class RequestPage : ContentPage
 		InitializeComponent();
 		BindingContext = requestPageViewModel;
 	}
-
-    protected override void OnNavigatedTo(NavigatedToEventArgs args)
-    {
-        base.OnNavigatedTo(args);
-    }
 }
