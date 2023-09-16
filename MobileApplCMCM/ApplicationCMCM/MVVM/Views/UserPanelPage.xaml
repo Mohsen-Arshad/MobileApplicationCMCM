@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:ApplicationCMCM.MVVM.ViewModels"
+             x:DataType="viewmodel:UserPanelPageViewModel"
              x:Class="ApplicationCMCM.MVVM.Views.UserPanelPage"
              Title="UserPanelPage">
-    <VerticalStackLayout Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
+    <VerticalStackLayout Spacing="5"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center">
         <Image Grid.Column="0"
                Grid.ColumnSpan="2"
                Source="logocmcm.png"
-               HorizontalOptions="Center" 
+               HorizontalOptions="Center"
                HeightRequest="60"
                WidthRequest="200"
-               Margin="0,0,0,30"/>
-        
+               Margin="0,0,0,30" />
+
         <Label Text="Your Information"
                TextColor="{StaticResource PrimaryDark}"
                FontSize="Large"
                HorizontalOptions="Center"
                Margin="0,0,0,40"
-               FontAttributes="Bold"/>
+               FontAttributes="Bold" />
 
         <Label Text="First Name"
                TextColor="{StaticResource PrimaryDark}"
@@ -30,7 +34,7 @@
                HeightRequest="60"
                Margin="0,-5,0,0"
                HorizontalOptions="Start">
-            <Entry Text="{Binding SendRequestModel.Subject}"
+            <Entry Text="{Binding UserInformationModel.FirstName}"
                    BackgroundColor="Transparent"
                    Placeholder="Title of request"
                    FontSize="Medium"
@@ -49,7 +53,7 @@
                HeightRequest="60"
                Margin="0,-5,0,0"
                HorizontalOptions="Start">
-            <Entry Text="{Binding SendRequestModel.Subject}"
+            <Entry Text="{Binding UserInformationModel.LastName}"
                    BackgroundColor="Transparent"
                    Placeholder="Title of request"
                    FontSize="Medium"
@@ -68,7 +72,7 @@
                HeightRequest="60"
                Margin="0,-5,0,0"
                HorizontalOptions="Start">
-            <Entry Text="{Binding SendRequestModel.Subject}"
+            <Entry Text="{Binding UserInformationModel.IdentificationNumber}"
                    BackgroundColor="Transparent"
                    Placeholder="Title of request"
                    FontSize="Medium"
@@ -87,21 +91,41 @@
                HeightRequest="60"
                Margin="0,-5,0,0"
                HorizontalOptions="Start">
-            <Entry Text="{Binding SendRequestModel.Subject}"
+            <Entry Text="{Binding UserInformationModel.EmailAddress}"
                    BackgroundColor="Transparent"
                    Placeholder="Title of request"
                    FontSize="Medium"
                    Margin="0,-13,0,-30"
-                   PlaceholderColor="Gray" />
+                   PlaceholderColor="Gray"/>
         </Frame>
 
-        <Button Text="Submit"
-                Style="{StaticResource ButtonOutline}"
-                FontSize="Medium"
-                IsEnabled="{Binding IsNotBusy}"
-                HeightRequest="50"
-                Command="{Binding CreateNewRequestCommand}"
-                CommandParameter="{Binding Category.Id}"
-                Margin="0,20,0,0"/>
+        <Grid ColumnDefinitions="*,*"
+              HorizontalOptions="Center"
+              ColumnSpacing="20">
+
+            <Button Grid.Column="0"
+                    Text="Cancel"
+                    TextColor="DarkRed"
+                    Style="{StaticResource ButtonOutline}"
+                    BorderColor="DarkRed"
+                    FontSize="Medium"
+                    IsEnabled="{Binding IsNotBusy}"
+                    HeightRequest="50"
+                    WidthRequest="150"
+                    Command="{Binding BackToMainPageCommand}"
+                    Margin="0,20,0,0"/>
+
+            <Button Grid.Column="1"
+                    Text="Submit"
+                    Style="{StaticResource ButtonOutline}"
+                    FontSize="Medium"
+                    IsEnabled="{Binding IsNotBusy}"
+                    HeightRequest="50"
+                    WidthRequest="150"
+                    Command="{Binding UpdateUserCommand}"
+                    Margin="0,20,0,0" />
+
+        </Grid>
+
     </VerticalStackLayout>
 </ContentPage>

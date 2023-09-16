@@ -14,6 +14,7 @@ public class ApiServices
     List<RequestModel> listRequestModel = new();
     HttpClient httpClient;
 
+
     public ApiServices()
     {
         httpClient = new HttpClient();
@@ -116,6 +117,20 @@ public class ApiServices
     #endregion
 
     #region USER
+    public async Task<UserModel> UserInfo(int userId)
+    {
+        httpClient = await UserValidation(httpClient);
+        var response = await httpClient.GetStringAsync(CustomConst.BaseUrl + "/Users/" + userId);
+        var result = JsonConvert.DeserializeObject<UserModel>(response);
+
+        if (result is null)
+        {
+            return null;
+        }
+
+        return result;
+    }
+
     public async Task<bool> RegisterUser(RegisterModel registerModel)
     {
         var json = JsonConvert.SerializeObject(registerModel);
@@ -142,8 +157,8 @@ public class ApiServices
         }
         var jsonResult = await response.Content.ReadAsStringAsync();
         var token = tokenHandler.ReadJwtToken(jsonResult);
-        var userId = token.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-        var userEmail = token.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+        var userId = token.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+        var userEmail = token.Claims.FirstOrDefault(c => c.Type == "email")?.Value;
         await SecureStorage.SetAsync("AccessToken", jsonResult);
         Preferences.Set("userid", userId);
         Preferences.Set("useremail", userEmail);
