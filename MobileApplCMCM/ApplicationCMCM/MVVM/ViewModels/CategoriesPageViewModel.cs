@@ -13,11 +13,13 @@ public partial class CategoriesPageViewModel : BaseViewModel
     public ObservableCollection<CategoryModel> Categories { get; } = new();
 
     private readonly ApiServices _apiServices;
+    private readonly IConnectivity _connectivity;
 
-    public CategoriesPageViewModel(ApiServices apiServices)
+    public CategoriesPageViewModel(ApiServices apiServices, IConnectivity connectivity)
     {
         Title = "Request Type";
         _apiServices = apiServices;
+        _connectivity = connectivity;
         GetAllCategoriesCommand.Execute(this);
     }
 
@@ -31,6 +33,12 @@ public partial class CategoriesPageViewModel : BaseViewModel
 
         try
         {
+            if (_connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+
+                await Shell.Current.DisplayAlert("Internet Issue", $"Please check your internet connection and try again!", "Ok");
+                return;
+            }
             IsBusy = true;
             var categoriesResult = await _apiServices.GetCategories();
 
