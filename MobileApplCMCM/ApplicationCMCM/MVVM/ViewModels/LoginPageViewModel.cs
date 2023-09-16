@@ -9,13 +9,15 @@ namespace ApplicationCMCM.MVVM.ViewModels;
 public partial class LoginPageViewModel : BaseViewModel
 {
     private readonly ApiServices _apiServices;
+    private readonly IConnectivity _connectivity;
 
     public LoginModel Login { set; get; } = new LoginModel();
 
-    public LoginPageViewModel(ApiServices apiServices)
+    public LoginPageViewModel(ApiServices apiServices, IConnectivity connectivity)
     {
         Title = "Login";
         _apiServices = apiServices;
+        _connectivity = connectivity;
     }
 
 
@@ -29,6 +31,12 @@ public partial class LoginPageViewModel : BaseViewModel
 
         try
         {
+            if (_connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+
+                await Shell.Current.DisplayAlert("Internet Issue", $"Please check your internet connection and try again!", "Ok");
+                return;
+            }
             IsBusy = true;
             var result = await _apiServices.LoginUser(Login);
             if (result)
