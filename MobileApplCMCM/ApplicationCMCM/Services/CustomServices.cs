@@ -8,7 +8,7 @@ public static class CustomServices
     {
         if (PhoneDialer.Default.IsSupported)
         {
-            PhoneDialer.Current.Open(CustomConst.EmergencyNumber);
+            PhoneDialer.Default.Open(CustomConst.EmergencyNumber);
         }
     }
 }

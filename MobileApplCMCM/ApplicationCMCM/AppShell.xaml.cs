@@ -15,6 +15,8 @@ namespace ApplicationCMCM
             Routing.RegisterRoute(nameof(UserPanelPage), typeof(UserPanelPage));
             Routing.RegisterRoute(nameof(PharmaciesPage), typeof(PharmaciesPage));
             Routing.RegisterRoute(nameof(CategoriesPage), typeof(CategoriesPage));
+            Routing.RegisterRoute(nameof(ConditionPage), typeof(ConditionPage));
+            Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
 
         }
     }

@@ -24,8 +24,8 @@
     </Shell.Resources>
 
     <ShellContent
-        Title="Register"
-        ContentTemplate="{DataTemplate local:RegisterPage}"
-        Route="RegisterPage" />
+        Title="RegisterP"
+        ContentTemplate="{DataTemplate local:ConditionPage}"
+        Route="ConditionPage" />
 
 </Shell>

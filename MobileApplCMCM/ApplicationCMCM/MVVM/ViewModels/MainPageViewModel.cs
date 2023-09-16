@@ -1,15 +1,23 @@
 ﻿using ApplicationCMCM.CustomConstants;
 using ApplicationCMCM.MVVM.Views;
 using ApplicationCMCM.Services;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
 
 namespace ApplicationCMCM.MVVM.ViewModels;
 
 public partial class MainPageViewModel : BaseViewModel
 {
+
+    public ObservableCollection<string> ImageUrl { get; } = new ();
+
     public MainPageViewModel()
     {
         Title = "Main Page";
+        ImageUrl.Add("pic1.png");
+        ImageUrl.Add("pic2.jpg");
+        ImageUrl.Add("pic3.jpg");
     }
 
     [RelayCommand]

@@ -10,8 +10,9 @@ public partial class UserPanelPageViewModel : BaseViewModel
 {
     private readonly ApiServices _apiServices;
     private readonly IConnectivity _connectivity;
+
     [ObservableProperty]
-    private UserModel userInformationModel = new();
+    public UserModel userInformationModel;
 
     public UserPanelPageViewModel(ApiServices apiServices, IConnectivity connectivity)
     {
