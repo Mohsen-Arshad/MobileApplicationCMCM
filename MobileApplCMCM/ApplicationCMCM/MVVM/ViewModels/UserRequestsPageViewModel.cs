@@ -10,12 +10,15 @@ namespace ApplicationCMCM.MVVM.ViewModels;
 public partial class UserRequestsPageViewModel : BaseViewModel
 {
     private readonly ApiServices _apiServices;
+    private readonly IConnectivity _connectivity;
+
     public ObservableCollection<RequestModel> UserRequests { get; } = new();
 
-    public UserRequestsPageViewModel(ApiServices apiServices)
+    public UserRequestsPageViewModel(ApiServices apiServices, IConnectivity connectivity)
     {
         Title = "Requests History";
         _apiServices = apiServices;
+        _connectivity = connectivity;
         GetAllRequestsCommand.Execute(this);
     }
 
@@ -29,6 +32,12 @@ public partial class UserRequestsPageViewModel : BaseViewModel
 
         try
         {
+            if (_connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+
+                await Shell.Current.DisplayAlert("Internet Issue", $"Please check your internet connection and try again!", "Ok");
+                return;
+            }
             IsBusy = true;
 
             var uRequests = await _apiServices.GetAllRequests();
