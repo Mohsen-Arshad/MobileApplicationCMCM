@@ -25,6 +25,9 @@ namespace ApplicationCMCM
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+            builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);
+            builder.Services.AddSingleton<IPhoneDialer>(PhoneDialer.Current);
+
             builder.Services.AddSingleton<ApiServices>();
             builder.Services.AddSingleton<IPopupNavigation>(MopupService.Instance);
 
@@ -34,7 +37,7 @@ namespace ApplicationCMCM
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<UserRequestsPage>();
             builder.Services.AddSingleton<PharmaciesPage>();
-            builder.Services.AddSingleton<UserPanelPage>();
+            builder.Services.AddTransient<UserPanelPage>();
             builder.Services.AddSingleton<CategoriesPage>();
             builder.Services.AddTransient<RequestPage>();
 
@@ -44,7 +47,7 @@ namespace ApplicationCMCM
             builder.Services.AddSingleton<MainPageViewModel>();
             builder.Services.AddSingleton<UserRequestsPageViewModel>();
             builder.Services.AddSingleton<PharmaciesPageViewModel>();
-            builder.Services.AddSingleton<UserPanelPageViewModel>();
+            builder.Services.AddTransient<UserPanelPageViewModel>();
             builder.Services.AddSingleton<CategoriesPageViewModel>();
             builder.Services.AddTransient<RequestPageViewModel>();
 
