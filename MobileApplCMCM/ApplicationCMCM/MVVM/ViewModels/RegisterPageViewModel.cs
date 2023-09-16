@@ -10,14 +10,14 @@ namespace ApplicationCMCM.MVVM.ViewModels;
 public partial class RegisterPageViewModel : BaseViewModel
 {
     private readonly ApiServices _apiServices;
-
+    IConnectivity _connectivity;
     public RegisterModel Register { get; set; } = new RegisterModel();
 
-    public RegisterPageViewModel(ApiServices apiServices)
+    public RegisterPageViewModel(ApiServices apiServices, IConnectivity connectivity)
     {
         Title = "Register";
         _apiServices = apiServices;
-
+        _connectivity = connectivity;
     }
 
     [RelayCommand]
@@ -30,6 +30,12 @@ public partial class RegisterPageViewModel : BaseViewModel
 
         try
         {
+            if (_connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+
+                await Shell.Current.DisplayAlert("Internet Issue", $"Please check your internet connection and try again!", "Ok");
+                return;
+            }
             IsBusy = true;
             var result = await _apiServices.RegisterUser(Register);
             if (result)

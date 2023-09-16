@@ -20,13 +20,15 @@ public partial class RequestPageViewModel : BaseViewModel
 
     [ObservableProperty]
     private CategoryModel category;
+    IConnectivity _connectivity;
 
-    public RequestPageViewModel(ApiServices apiServices , IPopupNavigation ipopupNavigation)
+    public RequestPageViewModel(ApiServices apiServices , IPopupNavigation ipopupNavigation, IConnectivity connectivity)
     {
         
         Title = "New Request";
         _apiServices = apiServices;
         _ipopupNavigation = ipopupNavigation;
+        _connectivity = connectivity;
     }
 
     [RelayCommand]
@@ -39,6 +41,12 @@ public partial class RequestPageViewModel : BaseViewModel
 
         try
         {
+            if (_connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+
+                await Shell.Current.DisplayAlert("Internet Issue", $"Please check your internet connection and try again!", "Ok");
+                return;
+            }
             IsBusy = true;
             SendRequestModel.CategoryId = categoryId;
             var result = await _apiServices.CreateRequest(SendRequestModel);
