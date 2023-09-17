@@ -18,13 +18,14 @@ public class ConditionPageViewModel
     {
         string userDetails = await SecureStorage.GetAsync("AccessToken");
 
-        if (string.IsNullOrWhiteSpace(userDetails))
+        await Task.Delay(5000);
+
+        if (string.IsNullOrEmpty(userDetails))
         {
             await Shell.Current.GoToAsync(nameof(RegisterPage));
         }
         else
         {
-
             await Shell.Current.GoToAsync(nameof(MainPage));
         }
     }
