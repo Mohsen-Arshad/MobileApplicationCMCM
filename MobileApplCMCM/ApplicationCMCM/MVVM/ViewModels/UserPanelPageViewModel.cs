@@ -12,7 +12,7 @@ public partial class UserPanelPageViewModel : BaseViewModel
     private readonly IConnectivity _connectivity;
 
     [ObservableProperty]
-    public UserModel userInformationModel;
+    UserModel userInformationModel;
 
     public UserPanelPageViewModel(ApiServices apiServices, IConnectivity connectivity)
     {
