@@ -4,4 +4,8 @@
              x:Class="ApplicationCMCM.MVVM.Views.ConditionPage"
              Title="ConditionPage"
              Shell.NavBarIsVisible="False">
+    <Image Source="azaduniversity.jpg"
+           Aspect="AspectFill" />
 </ContentPage>
+    
+    
