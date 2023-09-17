@@ -35,7 +35,7 @@
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\logocmcm.png" BaseSize="424,250" Color="White" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -72,6 +72,7 @@
 	  <None Remove="Resources\Images\pic1.png" />
 	  <None Remove="Resources\Images\pic2.jpg" />
 	  <None Remove="Resources\Images\pic3.jpg" />
+	  <None Remove="Resources\Splash\logocmcm.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -84,6 +85,10 @@
 
 	<ItemGroup>
 	  <Folder Include="Pages\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Splash\logocmcm.png" />
 	</ItemGroup>
 
 	<ItemGroup>
