@@ -39,7 +39,8 @@
                    Placeholder="Title of request"
                    FontSize="Medium"
                    Margin="0,-13,0,-30"
-                   PlaceholderColor="Gray" />
+                   PlaceholderColor="Gray"
+                   />
         </Frame>
 
         <Label Text="Last Name"
