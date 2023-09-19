@@ -1,4 +1,5 @@
 ﻿using ApplicationCMCM.MVVM.Models;
+using ApplicationCMCM.MVVM.Views;
 using ApplicationCMCM.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -12,7 +13,11 @@ public partial class UserRequestsPageViewModel : BaseViewModel
     private readonly ApiServices _apiServices;
     private readonly IConnectivity _connectivity;
 
-    public ObservableCollection<RequestModel> UserRequests { get; } = new();
+    [ObservableProperty]
+    private bool isRefreshing;
+
+    [ObservableProperty]
+    public ObservableCollection<RequestModel> userRequests = new();
 
     public UserRequestsPageViewModel(ApiServices apiServices, IConnectivity connectivity)
     {
@@ -20,6 +25,36 @@ public partial class UserRequestsPageViewModel : BaseViewModel
         _apiServices = apiServices;
         _connectivity = connectivity;
         GetAllRequestsCommand.Execute(this);
+    }
+
+    [RelayCommand]
+    async Task Refresh()
+    {
+        if (IsBusy)
+        {
+            return;
+        }
+
+        try
+        {
+            if (_connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                await Shell.Current.DisplayAlert("Internet Issue", $"Please check your internet connection and try again!", "Ok");
+                return;
+            }
+            IsRefreshing = true;
+            GetAllRequestsCommand.Execute(this);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+            await Shell.Current.DisplayAlert("Faild to load data", $"Cannot retrieve your data, try again!", "Ok");
+
+        }
+        finally
+        {
+            IsRefreshing = false;
+        }
     }
 
     [RelayCommand]
@@ -34,18 +69,17 @@ public partial class UserRequestsPageViewModel : BaseViewModel
         {
             if (_connectivity.NetworkAccess != NetworkAccess.Internet)
             {
-
                 await Shell.Current.DisplayAlert("Internet Issue", $"Please check your internet connection and try again!", "Ok");
                 return;
             }
             IsBusy = true;
 
-            var uRequests = await _apiServices.GetAllRequests();
-
             if (UserRequests.Count != 0)
             {
                 UserRequests.Clear();
             }
+
+            var uRequests = await _apiServices.GetAllRequests();
 
             foreach (var request in uRequests)
             {
@@ -95,6 +129,6 @@ public partial class UserRequestsPageViewModel : BaseViewModel
     [RelayCommand]
     async Task BackToMainMenu()
     {
-        await Shell.Current.GoToAsync("..");
+        await Shell.Current.GoToAsync(nameof(MainPage));
     }
 }

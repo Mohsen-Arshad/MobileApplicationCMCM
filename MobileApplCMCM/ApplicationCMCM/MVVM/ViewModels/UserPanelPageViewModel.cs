@@ -1,4 +1,5 @@
 ﻿using ApplicationCMCM.MVVM.Models;
+using ApplicationCMCM.MVVM.Views;
 using ApplicationCMCM.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -33,7 +34,6 @@ public partial class UserPanelPageViewModel : BaseViewModel
         {
             if (_connectivity.NetworkAccess != NetworkAccess.Internet)
             {
-
                 await Shell.Current.DisplayAlert("Internet Issue", $"Please check your internet connection and try again!", "Ok");
                 return;
             }
@@ -80,24 +80,14 @@ public partial class UserPanelPageViewModel : BaseViewModel
     [RelayCommand]
     async Task BackToMainPage()
     {
-        if (IsBusy)
-        {
-            return;
-        }
-
         try
         {
-            IsBusy = true;
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync(nameof(MainPage));
         }
         catch (Exception ex)
         {
             Debug.WriteLine(ex);
-            await Shell.Current.DisplayAlert("Alert", "Something went wrong", "Ok");
-        }
-        finally
-        {
-            IsBusy = false;
+            await Shell.Current.DisplayAlert("Alert", "Something went wrong to back", "Ok");
         }
     }
 }
