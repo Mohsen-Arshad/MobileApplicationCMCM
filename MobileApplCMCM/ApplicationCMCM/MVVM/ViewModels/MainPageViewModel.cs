@@ -10,14 +10,9 @@ namespace ApplicationCMCM.MVVM.ViewModels;
 public partial class MainPageViewModel : BaseViewModel
 {
 
-    public ObservableCollection<string> ImageUrl { get; } = new ();
-
     public MainPageViewModel()
     {
         Title = "Main Page";
-        ImageUrl.Add("pic1.png");
-        ImageUrl.Add("pic2.jpg");
-        ImageUrl.Add("pic3.jpg");
     }
 
     [RelayCommand]

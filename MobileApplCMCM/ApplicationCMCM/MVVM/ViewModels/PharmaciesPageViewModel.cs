@@ -1,4 +1,5 @@
 ﻿using ApplicationCMCM.MVVM.Models;
+using ApplicationCMCM.MVVM.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
@@ -56,6 +57,6 @@ public partial class PharmaciesPageViewModel : BaseViewModel
     [RelayCommand]
     async Task BackToMainMenu()
     {
-        await Shell.Current.GoToAsync("..");
+        await Shell.Current.GoToAsync(nameof(MainPage));
     }
 }
