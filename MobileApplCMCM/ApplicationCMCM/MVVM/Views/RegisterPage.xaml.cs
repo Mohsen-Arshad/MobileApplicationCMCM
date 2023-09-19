@@ -9,4 +9,9 @@ public partial class RegisterPage : ContentPage
 		InitializeComponent();
 		BindingContext = registerPageViewModel;
 	}
+
+    protected override bool OnBackButtonPressed()
+    {
+        return true;
+    }
 }
