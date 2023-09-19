@@ -8,56 +8,58 @@
              Title="{Binding Title}">
 
     <Grid RowDefinitions="*,Auto">
-
-        <CollectionView ItemsSource="{Binding UserRequests}"
-                        HorizontalOptions="Center"
-                        Grid.Row="0">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:RequestModel">
-                    <Frame Style="{StaticResource CardView}"
-                           Margin="10"
-                           HeightRequest="150">
-                        <VerticalStackLayout VerticalOptions="Center">
-                            <Label Text="{Binding CategoryName}"
-                                   FontSize="Large"
-                                   FontAttributes="Bold"
-                                   Margin="10,0,0,0"
-                                   TextColor="{StaticResource PrimaryDark}" />
-                            <HorizontalStackLayout>
-                                <Label Text="Subject: "
+        <RefreshView Command="{Binding RefreshCommand}"
+                     IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView ItemsSource="{Binding UserRequests}"
+                            HorizontalOptions="Center"
+                            Grid.Row="0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:RequestModel">
+                        <Frame Style="{StaticResource CardView}"
+                               Margin="10"
+                               HeightRequest="150">
+                            <VerticalStackLayout VerticalOptions="Center">
+                                <Label Text="{Binding CategoryName}"
                                        FontSize="Large"
                                        FontAttributes="Bold"
-                                       Margin="10,0,0,0" />
-                                <Label Text="{Binding Subject}"
-                                       FontSize="Medium"
-                                       VerticalOptions="Center" />
-                            </HorizontalStackLayout>
+                                       Margin="10,0,0,0"
+                                       TextColor="{StaticResource PrimaryDark}" />
+                                <HorizontalStackLayout>
+                                    <Label Text="Subject: "
+                                           FontSize="Large"
+                                           FontAttributes="Bold"
+                                           Margin="10,0,0,0" />
+                                    <Label Text="{Binding Subject}"
+                                           FontSize="Medium"
+                                           VerticalOptions="Center" />
+                                </HorizontalStackLayout>
 
-                            <HorizontalStackLayout>
-                                <Label Text="Comment: "
-                                       FontSize="Large"
-                                       FontAttributes="Bold"
-                                       Margin="10,0,0,0" />
-                                <Label Text="{Binding RequestComment}"
-                                       FontSize="Medium"
-                                       VerticalOptions="Center" />
-                            </HorizontalStackLayout>
+                                <HorizontalStackLayout>
+                                    <Label Text="Comment: "
+                                           FontSize="Large"
+                                           FontAttributes="Bold"
+                                           Margin="10,0,0,0" />
+                                    <Label Text="{Binding RequestComment}"
+                                           FontSize="Medium"
+                                           VerticalOptions="Center" />
+                                </HorizontalStackLayout>
 
-                            <HorizontalStackLayout>
-                                <Label Text="Status: "
-                                       FontSize="Large"
-                                       FontAttributes="Bold"
-                                       Margin="10,0,0,0" />
-                                <Label Text="Submitted"
-                                       FontSize="Medium"
-                                       VerticalOptions="Center"
-                                       TextColor="Green"/>
-                            </HorizontalStackLayout>
-                        </VerticalStackLayout>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                                <HorizontalStackLayout>
+                                    <Label Text="Status: "
+                                           FontSize="Large"
+                                           FontAttributes="Bold"
+                                           Margin="10,0,0,0" />
+                                    <Label Text="Submitted"
+                                           FontSize="Medium"
+                                           VerticalOptions="Center"
+                                           TextColor="Green" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
 
         <Button x:Name="BtnRegister"
                 Text="Back"
@@ -67,6 +69,6 @@
                 IsEnabled="{Binding IsNotBusy}"
                 Style="{StaticResource ButtonOutline}"
                 Margin="20"
-                Grid.Row="1"/>
+                Grid.Row="1" />
     </Grid>
 </ContentPage>
