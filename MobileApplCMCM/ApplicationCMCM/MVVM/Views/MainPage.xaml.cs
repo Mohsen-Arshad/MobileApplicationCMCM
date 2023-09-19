@@ -7,6 +7,11 @@ public partial class MainPage : ContentPage
 	public MainPage(MainPageViewModel mainPageViewModel)
 	{
 		InitializeComponent();
-		BindingContext = mainPageViewModel;
+        BindingContext = mainPageViewModel;
 	}
+
+    protected override bool OnBackButtonPressed()
+    {
+		return true;
+    }
 }

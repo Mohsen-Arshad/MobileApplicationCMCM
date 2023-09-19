@@ -6,11 +6,14 @@
              x:Class="ApplicationCMCM.MVVM.Views.MainPage"
              Title="{Binding Title}"
              Shell.NavBarIsVisible="False">
-    
+
     <Grid RowDefinitions="0.05*,0.3*,0.5*,0.05*"
           Padding="10">
         <Grid Grid.Row="0"
-              ColumnDefinitions="*,*,*">
+              ColumnDefinitions="*,*,*"
+              BackgroundColor="{AppThemeBinding Dark={StaticResource LightBackground}}"
+              HeightRequest="60">
+
             <Image Grid.Column="0"
                    Grid.ColumnSpan="2"
                    Source="logocmcm.png"
@@ -21,32 +24,43 @@
                    Source="account.png"
                    HorizontalOptions="End"
                    HeightRequest="60"
-                   Margin="0,0,-10,0">
+                   Margin="0,0,-5,0">
+
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding GoToUserPanelCommand}" />
                 </Image.GestureRecognizers>
             </Image>
         </Grid>
 
-        <Frame Grid.Row="1"
-               BackgroundColor="Black"
-               Margin="20"
-               CornerRadius="30">
-            <Frame CornerRadius="30"
-                   Margin="-18">
-                <CarouselView EmptyView="Loading,Please Wait..."
-                              ItemsSource="{Binding ImageUrl}"
-                              AutomationId="1"
-                              Margin="-20">
-                    <CarouselView.ItemTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding .}"
-                                   Aspect="AspectFill" />
-                        </DataTemplate>
-                    </CarouselView.ItemTemplate>
-                </CarouselView>
-            </Frame>
-        </Frame>
+        <Grid Grid.Row="1"
+              RowDefinitions="0.9*,0.1*">
+            <CarouselView Grid.Row="0"
+                          
+                          EmptyView="Loading,Please Wait..."
+                          AutomationId="1"
+                          Margin="20"
+                          IndicatorView="indicatorView">
+                <CarouselView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>picone.png</x:String>
+                        <x:String>picthree.png</x:String>
+                        <x:String>pictwo.png</x:String>
+                    </x:Array>
+                </CarouselView.ItemsSource>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding .}"
+                               Aspect="AspectFill" />
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <IndicatorView x:Name="indicatorView"
+                           Grid.Row="1"
+                           Margin="5"
+                           IndicatorColor="Green"
+                           SelectedIndicatorColor="Yellow"
+                           HorizontalOptions="Center" />
+        </Grid>
         <Grid Grid.Row="2"
               RowDefinitions="*,*"
               ColumnDefinitions="*,*"
@@ -147,13 +161,14 @@
                 </Frame.Background>
                 <VerticalStackLayout HorizontalOptions="Center"
                                      VerticalOptions="Center">
-                    <Label Text="CMCM-ASSISTANCE"
+                    <Label Text="CMCM"
                            TextColor="GhostWhite"
-                           HorizontalOptions="Center" />
-                    <Label Text="Emergencies Abroad"
                            HorizontalOptions="Center"
-                           Margin="0,5,0,0"
-                           TextColor="GhostWhite" />
+                           FontSize="Small" />
+                    <Label Text="Emergencies"
+                           HorizontalOptions="Center"
+                           TextColor="GhostWhite"
+                           FontSize="Small" />
                     <Label Text="24/7"
                            HorizontalOptions="Center"
                            TextColor="GhostWhite" />
