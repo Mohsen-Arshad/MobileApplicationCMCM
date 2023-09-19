@@ -4,7 +4,9 @@
              xmlns:viewmodel="clr-namespace:ApplicationCMCM.MVVM.ViewModels"
              x:DataType="viewmodel:LoginPageViewModel"
              x:Class="ApplicationCMCM.MVVM.Views.LoginPage"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             Shell.NavBarIsVisible="False">
+    
     <VerticalStackLayout VerticalOptions="Center" Margin="20,0,20,0" Spacing="20">
         <Image Source="logocmcm.png"
                HorizontalOptions="Center"
@@ -15,7 +17,7 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center"
             FontSize="Large"
-            TextColor="#101010"/>
+            Style="{StaticResource BaseLabel}"/>
 
         <Entry Text="{Binding Login.EmailAddress}"
                Placeholder="Email"/>
@@ -38,7 +40,7 @@
         <HorizontalStackLayout HorizontalOptions="Center">
             <Label Text="Don't you have any account? "
                    FontSize="Medium"
-                   TextColor="{StaticResource LabelText}"/>
+                   Style="{StaticResource BaseLabel}"/>
             <Label Text="Register"
                    FontSize="Medium"
                    TextColor="{StaticResource PrimaryDark}">

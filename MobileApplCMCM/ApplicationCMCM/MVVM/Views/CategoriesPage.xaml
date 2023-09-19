@@ -7,14 +7,15 @@
              x:Class="ApplicationCMCM.MVVM.Views.CategoriesPage"
              Title="{Binding Title}">
 
-    <Grid RowDefinitions="0.1*,0.9*" HorizontalOptions="Center">
+    <Grid RowDefinitions="0.1*,0.8*,Auto"
+          HorizontalOptions="Center">
         <Label Text="Please select a request type"
                Grid.Row="0"
                FontSize="Large"
                HorizontalOptions="Center"
                Margin="0,20,0,0"
-               TextColor="{StaticResource PrimaryDark}"/>
-        
+               TextColor="{StaticResource PrimaryDark}" />
+
         <CollectionView ItemsSource="{Binding Categories}"
                         ItemsLayout="VerticalGrid, 2"
                         Grid.Row="1"
@@ -23,25 +24,26 @@
                 <DataTemplate x:DataType="model:CategoryModel">
                     <Grid Padding="10">
                         <VerticalStackLayout>
-                            <Frame CornerRadius="45" 
+                            <Frame CornerRadius="45"
                                    HeightRequest="90"
                                    WidthRequest="90">
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CategoriesPageViewModel}}, Path=GoToRequestPageCommand}"/>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                          Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CategoriesPageViewModel}}, Path=GoToRequestPageCommand}" />
                                 </Frame.GestureRecognizers>
                                 <Image Source="{Binding CategoryImage}"
                                        HeightRequest="65"
                                        WidthRequest="65"
-                                       Aspect="AspectFill"
-                                       />
+                                       Aspect="AspectFill" />
                             </Frame>
                             <Label Text="{Binding CategoryName}"
-                                       FontSize="Medium"
-                                       HorizontalOptions="Center"
-                                       Margin="0,5,0,0"
-                                       TextColor="{StaticResource Primary}">
+                                   FontSize="Medium"
+                                   HorizontalOptions="Center"
+                                   Margin="0,5,0,0"
+                                   TextColor="{StaticResource Primary}">
                                 <Label.GestureRecognizers>
-                                    <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CategoriesPageViewModel}}, Path=GoToRequestPageCommand}"/>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                          Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CategoriesPageViewModel}}, Path=GoToRequestPageCommand}" />
                                 </Label.GestureRecognizers>
                             </Label>
                         </VerticalStackLayout>
@@ -49,6 +51,15 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </Grid>
 
+        <Button Grid.Row="2"
+                Text="Back"
+                HeightRequest="50"
+                WidthRequest="300"
+                FontSize="Medium"
+                Command="{Binding BackToMainMenuCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Style="{StaticResource ButtonOutline}"
+                Margin="20" />
+    </Grid>
 </ContentPage>
