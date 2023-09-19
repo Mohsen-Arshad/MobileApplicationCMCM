@@ -20,8 +20,14 @@
                TextColor="{StaticResource PrimaryDark}"
                FontSize="Large"
                HorizontalOptions="Center"
-               Margin="0,0,0,40"
+               Margin="0,0,0,25"
                FontAttributes="Bold" />
+        
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center"
+                           Color="{StaticResource Primary}"/>
 
         <Label Text="First Name"
                TextColor="{StaticResource PrimaryDark}"
@@ -40,7 +46,7 @@
                    FontSize="Medium"
                    Margin="0,-13,0,-30"
                    PlaceholderColor="Gray"
-                   />
+                   TextColor="{StaticResource Primary}"/>
         </Frame>
 
         <Label Text="Last Name"
@@ -59,7 +65,8 @@
                    Placeholder="Title of request"
                    FontSize="Medium"
                    Margin="0,-13,0,-30"
-                   PlaceholderColor="Gray" />
+                   PlaceholderColor="Gray"
+                   TextColor="{StaticResource Primary}"/>
         </Frame>
 
         <Label Text="Identification Number"
@@ -78,7 +85,8 @@
                    Placeholder="Title of request"
                    FontSize="Medium"
                    Margin="0,-13,0,-30"
-                   PlaceholderColor="Gray" />
+                   PlaceholderColor="Gray"
+                   TextColor="{StaticResource Primary}"/>
         </Frame>
 
         <Label Text="E-Mail Address"
@@ -97,7 +105,8 @@
                    Placeholder="Title of request"
                    FontSize="Medium"
                    Margin="0,-13,0,-30"
-                   PlaceholderColor="Gray"/>
+                   PlaceholderColor="Gray"
+                   TextColor="{StaticResource Primary}"/>
         </Frame>
 
         <Grid ColumnDefinitions="*,*"
@@ -114,7 +123,7 @@
                     HeightRequest="50"
                     WidthRequest="150"
                     Command="{Binding BackToMainPageCommand}"
-                    Margin="0,20,0,0"/>
+                    Margin="0,20,0,0" />
 
             <Button Grid.Column="1"
                     Text="Submit"
@@ -127,6 +136,5 @@
                     Margin="0,20,0,0" />
 
         </Grid>
-
     </VerticalStackLayout>
 </ContentPage>

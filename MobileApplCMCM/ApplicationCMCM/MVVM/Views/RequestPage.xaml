@@ -5,101 +5,111 @@
              x:DataType="viewmodel:RequestPageViewModel"
              x:Class="ApplicationCMCM.MVVM.Views.RequestPage"
              Title="{Binding Category.CategoryName}">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Frame CornerRadius="10"
+                   Margin="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Category"
+                           TextColor="{StaticResource PrimaryDark}"
+                           FontSize="Large" />
 
-    <VerticalStackLayout>
-        <Frame CornerRadius="10"
-               Margin="10">
-            <VerticalStackLayout Spacing="10">
-                <Label Text="Category"
-                       TextColor="{StaticResource PrimaryDark}"
-                       FontSize="Large" />
+                    <HorizontalStackLayout Margin="0,5,0,0">
+                        <Frame CornerRadius="60"
+                               BorderColor="Gray"
+                               WidthRequest="230"
+                               HeightRequest="60"
+                               Margin="0,-10,0,0">
+                            <Label Text="{Binding Category.CategoryName}"
+                                   TextColor="{StaticResource PrimaryDark}"
+                                   FontSize="Medium"
+                                   Margin="0,-5,0,0" />
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BackToSelectCategoriesCommand}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Image Source="{Binding Category.CategoryImage}"
+                               Aspect="AspectFill"
+                               HeightRequest="60"
+                               WidthRequest="60"
+                               Margin="15,-10,0,0" />
+                    </HorizontalStackLayout>
 
-                <HorizontalStackLayout Margin="0,5,0,0">
+
+                    <Label Text="Subject"
+                           TextColor="{StaticResource PrimaryDark}"
+                           FontSize="Large"
+                           Margin="0,20,0,0" />
+
+
                     <Frame CornerRadius="60"
                            BorderColor="Gray"
-                           WidthRequest="260"
+                           WidthRequest="230"
                            HeightRequest="60"
-                           Margin="0,-10,0,0">
-                        <Label Text="{Binding Category.CategoryName}"
-                               TextColor="{StaticResource PrimaryDark}"
+                           Margin="0,-5,0,0"
+                           HorizontalOptions="Start">
+                        <Entry Text="{Binding SendRequestModel.Subject}"
+                               BackgroundColor="Transparent"
+                               Placeholder="Title of request"
                                FontSize="Medium"
-                               Margin="0,-5,0,0" />
+                               Margin="0,-13,0,-30"
+                               PlaceholderColor="Gray"
+                               TextColor="{StaticResource Primary}"/>
+                    </Frame>
+
+                    <Label Text="Document"
+                           TextColor="{StaticResource PrimaryDark}"
+                           FontSize="Large"
+                           Margin="0,20,0,0" />
+                    <Frame CornerRadius="30"
+                           BorderColor="Gray"
+                           WidthRequest="140"
+                           HeightRequest="180"
+                           Margin="0,-5,0,0"
+                           HorizontalOptions="Start">
+                        <VerticalStackLayout VerticalOptions="Center"
+                                             Margin="-20">
+                            <Label Text="Add Document"
+                                   TextColor="Gray"
+                                   HorizontalOptions="Center"
+                                   FontSize="Medium" />
+                            <Image Source="docadd.svg"
+                                   HorizontalOptions="Center"
+                                   HeightRequest="70"
+                                   WidthRequest="70" />
+                        </VerticalStackLayout>
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding BackToSelectCategoriesCommand}" />
+                            <TapGestureRecognizer Command="{Binding PickDocumnetCommand}"
+                                                  CommandParameter="" />
                         </Frame.GestureRecognizers>
                     </Frame>
-                    <Image Source="{Binding Category.CategoryImage}"
-                           Aspect="AspectFill"
-                           HeightRequest="60"
-                           WidthRequest="60"
-                           Margin="15,-10,0,0" />
-                </HorizontalStackLayout>
 
+                    <Label Text="Comments"
+                           TextColor="{StaticResource PrimaryDark}"
+                           FontSize="Large"
+                           Margin="0,20,0,0" />
+                    <Editor Text="{Binding SendRequestModel.RequestComment}"
+                            Placeholder="Add a comment here...."
+                            FontSize="Subtitle"
+                            AutoSize="TextChanges"
+                            PlaceholderColor="LightGrey"
+                            TextColor="{StaticResource Primary}"/>
 
-                <Label Text="Subject"
-                       TextColor="{StaticResource PrimaryDark}"
-                       FontSize="Large"
-                       Margin="0,20,0,0" />
+                    <Button Text="Submit"
+                            Style="{StaticResource ButtonOutline}"
+                            FontSize="Medium"
+                            IsEnabled="{Binding IsNotBusy}"
+                            HeightRequest="50"
+                            Command="{Binding CreateNewRequestCommand}"
+                            CommandParameter="{Binding Category.Id}" />
+                    
+                    <ActivityIndicator IsVisible="{Binding IsBusy}"
+                                       IsRunning="{Binding IsBusy}"
+                                       HorizontalOptions="FillAndExpand"
+                                       VerticalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
 
-
-                <Frame CornerRadius="60"
-                       BorderColor="Gray"
-                       WidthRequest="260"
-                       HeightRequest="60"
-                       Margin="0,-5,0,0"
-                       HorizontalOptions="Start">
-                    <Entry Text="{Binding SendRequestModel.Subject}"
-                           BackgroundColor="Transparent"
-                           Placeholder="Title of request"
-                           FontSize="Medium"
-                           Margin="0,-13,0,-30"
-                           PlaceholderColor="Gray" />
-                </Frame>
-
-                <Label Text="Document"
-                       TextColor="{StaticResource PrimaryDark}"
-                       FontSize="Large"
-                       Margin="0,20,0,0" />
-                <Frame CornerRadius="30"
-                       BorderColor="Gray"
-                       WidthRequest="140"
-                       HeightRequest="180"
-                       Margin="0,-5,0,0"
-                       HorizontalOptions="Start">
-                    <VerticalStackLayout VerticalOptions="Center"
-                                         Margin="-20">
-                        <Label Text="Add Document"
-                               TextColor="Gray"
-                               HorizontalOptions="Center"
-                               FontSize="Medium" />
-                        <Image Source="docadd.svg"
-                               HorizontalOptions="Center"
-                               HeightRequest="70"
-                               WidthRequest="70" />
-                    </VerticalStackLayout>
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding PickDocumnetCommand}"
-                                              CommandParameter="" />
-                    </Frame.GestureRecognizers>
-                </Frame>
-
-                <Label Text="Comments"
-                       TextColor="{StaticResource PrimaryDark}"
-                       FontSize="Large"
-                       Margin="0,20,0,0" />
-                <Editor Text="{Binding SendRequestModel.RequestComment}"
-                        Placeholder="Add a comment here...."
-                        FontSize="Subtitle"
-                        AutoSize="TextChanges" />
-
-                <Button Text="Submit"
-                        Style="{StaticResource ButtonOutline}"
-                        FontSize="Medium"
-                        IsEnabled="{Binding IsNotBusy}"
-                        HeightRequest="50"
-                        Command="{Binding CreateNewRequestCommand}"
-                        CommandParameter="{Binding Category.Id}" />
-            </VerticalStackLayout>
-        </Frame>
-    </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
