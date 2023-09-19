@@ -63,6 +63,6 @@ public partial class LoginPageViewModel : BaseViewModel
     [RelayCommand]
     async Task BackToRegisterPageAsync()
     {
-        await Shell.Current.GoToAsync("..", true);
+        await Shell.Current.GoToAsync(nameof(RegisterPage));
     }
 }

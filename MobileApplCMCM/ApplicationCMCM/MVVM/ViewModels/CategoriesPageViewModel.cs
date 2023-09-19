@@ -77,4 +77,10 @@ public partial class CategoriesPageViewModel : BaseViewModel
                 { "Category" , categoryModel }
             });
     }
+
+    [RelayCommand]
+    async Task BackToMainMenu()
+    {
+        await Shell.Current.GoToAsync(nameof(MainPage));
+    }
 }
