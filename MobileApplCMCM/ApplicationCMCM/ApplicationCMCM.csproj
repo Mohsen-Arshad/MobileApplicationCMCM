@@ -24,7 +24,7 @@
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
@@ -32,8 +32,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-
+		
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\logocmcm.png" BaseSize="424,250" Color="White" />
 
@@ -49,30 +48,31 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\abroad.svg" />
-	  <None Remove="Resources\Images\account.png" />
-	  <None Remove="Resources\Images\add.png" />
-	  <None Remove="Resources\Images\add.svg" />
-	  <None Remove="Resources\Images\addempty.png" />
-	  <None Remove="Resources\Images\call.png" />
-	  <None Remove="Resources\Images\camera.png" />
-	  <None Remove="Resources\Images\camera.svg" />
-	  <None Remove="Resources\Images\certificate.svg" />
-	  <None Remove="Resources\Images\dentalcare.svg" />
-	  <None Remove="Resources\Images\filepick.svg" />
-	  <None Remove="Resources\Images\folder.png" />
-	  <None Remove="Resources\Images\hospital.svg" />
-	  <None Remove="Resources\Images\location.png" />
-	  <None Remove="Resources\Images\logocmcm.png" />
-	  <None Remove="Resources\Images\map.png" />
-	  <None Remove="Resources\Images\miscellaneous.svg" />
-	  <None Remove="Resources\Images\optical.svg" />
-	  <None Remove="Resources\Images\orthopedics.svg" />
-	  <None Remove="Resources\Images\osteopathy.svg" />
-	  <None Remove="Resources\Images\pic1.png" />
-	  <None Remove="Resources\Images\pic2.jpg" />
-	  <None Remove="Resources\Images\pic3.jpg" />
-	  <None Remove="Resources\Splash\logocmcm.png" />
+		<None Remove="Resources\AppIcon\appicon.svg" />
+		<None Remove="Resources\Images\abroad.svg" />
+		<None Remove="Resources\Images\account.png" />
+		<None Remove="Resources\Images\add.png" />
+		<None Remove="Resources\Images\add.svg" />
+		<None Remove="Resources\Images\addempty.png" />
+		<None Remove="Resources\Images\call.png" />
+		<None Remove="Resources\Images\camera.png" />
+		<None Remove="Resources\Images\camera.svg" />
+		<None Remove="Resources\Images\certificate.svg" />
+		<None Remove="Resources\Images\dentalcare.svg" />
+		<None Remove="Resources\Images\filepick.svg" />
+		<None Remove="Resources\Images\folder.png" />
+		<None Remove="Resources\Images\hospital.svg" />
+		<None Remove="Resources\Images\location.png" />
+		<None Remove="Resources\Images\logocmcm.png" />
+		<None Remove="Resources\Images\map.png" />
+		<None Remove="Resources\Images\miscellaneous.svg" />
+		<None Remove="Resources\Images\optical.svg" />
+		<None Remove="Resources\Images\orthopedics.svg" />
+		<None Remove="Resources\Images\osteopathy.svg" />
+		<None Remove="Resources\Images\picone.png" />
+		<None Remove="Resources\Images\picthree.png" />
+		<None Remove="Resources\Images\pictwo.png" />
+		<None Remove="Resources\Splash\logocmcm.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -84,47 +84,55 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Pages\" />
+	  <MauiIcon Include="Resources\AppIcon\appicon.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiImage Include="Resources\Splash\logocmcm.png" />
+		<MauiImage Include="Resources\Splash\logocmcm.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="MVVM\Views\CategoriesPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="MVVM\Views\ConditionPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="MVVM\Views\LoginPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="MVVM\Views\MainPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="MVVM\Views\PharmaciesPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="MVVM\Views\PopupPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="MVVM\Views\RegisterPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="MVVM\Views\RequestPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="MVVM\Views\UserPanelPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="MVVM\Views\UserRequestsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles\CustomStyles.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+		<MauiXaml Update="MVVM\Views\CategoriesPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="MVVM\Views\ConditionPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="MVVM\Views\LoginPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="MVVM\Views\MainPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="MVVM\Views\PharmaciesPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="MVVM\Views\PopupPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="MVVM\Views\RegisterPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="MVVM\Views\RequestPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="MVVM\Views\UserPanelPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="MVVM\Views\UserRequestsPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Resources\Styles\CustomStyles.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 	</ItemGroup>
+
+	<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+		<AndroidKeyStore>True</AndroidKeyStore>
+		<AndroidSigningKeyStore>..\key.keystore</AndroidSigningKeyStore>
+		<AndroidSigningStorePass>@rrelang_234</AndroidSigningStorePass>
+		<AndroidSigningKeyAlias>MauiAlias</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass>@rrelang_234</AndroidSigningKeyPass>
+	</PropertyGroup>
 
 </Project>

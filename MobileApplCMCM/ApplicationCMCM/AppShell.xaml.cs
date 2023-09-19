@@ -1,4 +1,6 @@
 ﻿using ApplicationCMCM.MVVM.Views;
+using Microsoft.Maui.ApplicationModel;
+using Microsoft.Maui.Controls.PlatformConfiguration;
 
 namespace ApplicationCMCM
 {
@@ -7,6 +9,7 @@ namespace ApplicationCMCM
         public AppShell()
         {
             InitializeComponent();
+
 
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
@@ -17,6 +20,8 @@ namespace ApplicationCMCM
             Routing.RegisterRoute(nameof(CategoriesPage), typeof(CategoriesPage));
             Routing.RegisterRoute(nameof(ConditionPage), typeof(ConditionPage));
             Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
+
+
 
         }
     }
