@@ -131,7 +131,7 @@ public partial class RequestPageViewModel : BaseViewModel
 
         try
         {
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync(nameof(CategoriesPage));
             IsBusy = true;
         }
         catch (Exception ex)

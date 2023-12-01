@@ -107,6 +107,13 @@
                                        IsRunning="{Binding IsBusy}"
                                        HorizontalOptions="FillAndExpand"
                                        VerticalOptions="Center" />
+                    <Button Text="Back"
+                            Style="{StaticResource ButtonOutline}"
+                            FontSize="Medium"
+                            IsEnabled="{Binding IsNotBusy}"
+                            HeightRequest="50"
+                            Command="{Binding BackToSelectCategoriesCommand}"
+                            CommandParameter="{Binding Category.Id}" />
                 </VerticalStackLayout>
             </Frame>
         </VerticalStackLayout>

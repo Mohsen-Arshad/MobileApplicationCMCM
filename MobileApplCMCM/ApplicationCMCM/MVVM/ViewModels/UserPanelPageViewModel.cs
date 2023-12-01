@@ -90,4 +90,20 @@ public partial class UserPanelPageViewModel : BaseViewModel
             await Shell.Current.DisplayAlert("Alert", "Something went wrong to back", "Ok");
         }
     }
+
+
+    [RelayCommand]
+    async Task SignOutUser()
+    {
+        try
+        {
+            await SecureStorage.SetAsync("AccessToken", "");
+            await Shell.Current.GoToAsync(nameof(RegisterPage));
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+            await Shell.Current.DisplayAlert("Alert", "Something went wrong to back", "Ok");
+        }
+    }
 }

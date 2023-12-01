@@ -5,136 +5,150 @@
              x:DataType="viewmodel:UserPanelPageViewModel"
              x:Class="ApplicationCMCM.MVVM.Views.UserPanelPage"
              Title="UserPanelPage">
-    <VerticalStackLayout Spacing="5"
-                         HorizontalOptions="Center"
-                         VerticalOptions="Center">
-        <Image Grid.Column="0"
-               Grid.ColumnSpan="2"
-               Source="logocmcm.png"
-               HorizontalOptions="Center"
-               HeightRequest="60"
-               WidthRequest="200"
-               Margin="0,0,0,30" />
+    <ScrollView>
+        <VerticalStackLayout Margin="8"
+                             Spacing="5"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center">
+            <Image Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Source="logocmcm.png"
+                   HorizontalOptions="Center"
+                   HeightRequest="60"
+                   WidthRequest="350"
+                   Margin="0,0,0,30" />
 
-        <Label Text="Your Information"
-               TextColor="{StaticResource PrimaryDark}"
-               FontSize="Large"
-               HorizontalOptions="Center"
-               Margin="0,0,0,25"
-               FontAttributes="Bold" />
-        
-        <ActivityIndicator IsVisible="{Binding IsBusy}"
-                           IsRunning="{Binding IsBusy}"
-                           HorizontalOptions="FillAndExpand"
-                           VerticalOptions="Center"
-                           Color="{StaticResource Primary}"/>
+            <Label Text="Your Information"
+                   TextColor="{StaticResource PrimaryDark}"
+                   FontSize="Large"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,25"
+                   FontAttributes="Bold" />
 
-        <Label Text="First Name"
-               TextColor="{StaticResource PrimaryDark}"
-               FontSize="Medium"
-               Margin="0,10,0,0" />
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                               IsRunning="{Binding IsBusy}"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="Center"
+                               Color="{StaticResource Primary}" />
 
-        <Frame CornerRadius="60"
-               BorderColor="Gray"
-               WidthRequest="350"
-               HeightRequest="60"
-               Margin="0,-5,0,0"
-               HorizontalOptions="Start">
-            <Entry Text="{Binding UserInformationModel.FirstName}"
-                   BackgroundColor="Transparent"
-                   Placeholder="Title of request"
+            <Label Text="First Name"
+                   TextColor="{StaticResource PrimaryDark}"
                    FontSize="Medium"
-                   Margin="0,-13,0,-30"
-                   PlaceholderColor="Gray"
-                   TextColor="{StaticResource Primary}"/>
-        </Frame>
+                   Margin="0,10,0,0" />
 
-        <Label Text="Last Name"
-               TextColor="{StaticResource PrimaryDark}"
-               FontSize="Medium"
-               Margin="0,10,0,0" />
+            <Frame CornerRadius="60"
+                   BorderColor="Gray"
+                   WidthRequest="350"
+                   HeightRequest="60"
+                   Margin="0,-5,0,0"
+                   HorizontalOptions="Start">
+                <Entry Text="{Binding UserInformationModel.FirstName}"
+                       BackgroundColor="Transparent"
+                       Placeholder="Title of request"
+                       FontSize="Medium"
+                       Margin="0,-13,0,-30"
+                       PlaceholderColor="Gray"
+                       TextColor="{StaticResource Primary}" />
+            </Frame>
 
-        <Frame CornerRadius="60"
-               BorderColor="Gray"
-               WidthRequest="350"
-               HeightRequest="60"
-               Margin="0,-5,0,0"
-               HorizontalOptions="Start">
-            <Entry Text="{Binding UserInformationModel.LastName}"
-                   BackgroundColor="Transparent"
-                   Placeholder="Title of request"
+            <Label Text="Last Name"
+                   TextColor="{StaticResource PrimaryDark}"
                    FontSize="Medium"
-                   Margin="0,-13,0,-30"
-                   PlaceholderColor="Gray"
-                   TextColor="{StaticResource Primary}"/>
-        </Frame>
+                   Margin="0,10,0,0" />
 
-        <Label Text="Identification Number"
-               TextColor="{StaticResource PrimaryDark}"
-               FontSize="Medium"
-               Margin="0,10,0,0" />
+            <Frame CornerRadius="60"
+                   BorderColor="Gray"
+                   WidthRequest="350"
+                   HeightRequest="60"
+                   Margin="0,-5,0,0"
+                   HorizontalOptions="Start">
+                <Entry Text="{Binding UserInformationModel.LastName}"
+                       BackgroundColor="Transparent"
+                       Placeholder="Title of request"
+                       FontSize="Medium"
+                       Margin="0,-13,0,-30"
+                       PlaceholderColor="Gray"
+                       TextColor="{StaticResource Primary}" />
+            </Frame>
 
-        <Frame CornerRadius="60"
-               BorderColor="Gray"
-               WidthRequest="350"
-               HeightRequest="60"
-               Margin="0,-5,0,0"
-               HorizontalOptions="Start">
-            <Entry Text="{Binding UserInformationModel.IdentificationNumber}"
-                   BackgroundColor="Transparent"
-                   Placeholder="Title of request"
+            <Label Text="Identification Number"
+                   TextColor="{StaticResource PrimaryDark}"
                    FontSize="Medium"
-                   Margin="0,-13,0,-30"
-                   PlaceholderColor="Gray"
-                   TextColor="{StaticResource Primary}"/>
-        </Frame>
+                   Margin="0,10,0,0" />
 
-        <Label Text="E-Mail Address"
-               TextColor="{StaticResource PrimaryDark}"
-               FontSize="Medium"
-               Margin="0,10,0,0" />
+            <Frame CornerRadius="60"
+                   BorderColor="Gray"
+                   WidthRequest="350"
+                   HeightRequest="60"
+                   Margin="0,-5,0,0"
+                   HorizontalOptions="Start">
+                <Entry Text="{Binding UserInformationModel.IdentificationNumber}"
+                       BackgroundColor="Transparent"
+                       Placeholder="Title of request"
+                       FontSize="Medium"
+                       Margin="0,-13,0,-30"
+                       PlaceholderColor="Gray"
+                       TextColor="{StaticResource Primary}" />
+            </Frame>
 
-        <Frame CornerRadius="60"
-               BorderColor="Gray"
-               WidthRequest="350"
-               HeightRequest="60"
-               Margin="0,-5,0,0"
-               HorizontalOptions="Start">
-            <Entry Text="{Binding UserInformationModel.EmailAddress}"
-                   BackgroundColor="Transparent"
-                   Placeholder="Title of request"
+            <Label Text="E-Mail Address"
+                   TextColor="{StaticResource PrimaryDark}"
                    FontSize="Medium"
-                   Margin="0,-13,0,-30"
-                   PlaceholderColor="Gray"
-                   TextColor="{StaticResource Primary}"/>
-        </Frame>
+                   Margin="0,10,0,0" />
 
-        <Grid ColumnDefinitions="*,*"
-              HorizontalOptions="Center"
-              ColumnSpacing="20">
+            <Frame CornerRadius="60"
+                   BorderColor="Gray"
+                   WidthRequest="350"
+                   HeightRequest="60"
+                   Margin="0,-5,0,0"
+                   HorizontalOptions="Start">
+                <Entry Text="{Binding UserInformationModel.EmailAddress}"
+                       BackgroundColor="Transparent"
+                       Placeholder="Title of request"
+                       FontSize="Medium"
+                       Margin="0,-13,0,-30"
+                       PlaceholderColor="Gray"
+                       TextColor="{StaticResource Primary}" />
+            </Frame>
 
-            <Button Grid.Column="0"
-                    Text="Cancel"
-                    TextColor="DarkRed"
-                    Style="{StaticResource ButtonOutline}"
-                    BorderColor="DarkRed"
-                    FontSize="Medium"
-                    IsEnabled="{Binding IsNotBusy}"
-                    HeightRequest="50"
-                    WidthRequest="150"
-                    Command="{Binding BackToMainPageCommand}"
-                    Margin="0,20,0,0" />
+            <Grid ColumnDefinitions="*,*"
+                  HorizontalOptions="Center"
+                  ColumnSpacing="20">
 
+                <Button Grid.Column="0"
+                        Text="Cancel"
+                        TextColor="DarkOrange"
+                        Style="{StaticResource ButtonOutline}"
+                        BorderColor="DarkOrange"
+                        FontSize="Medium"
+                        IsEnabled="{Binding IsNotBusy}"
+                        HeightRequest="50"
+                        WidthRequest="150"
+                        Command="{Binding BackToMainPageCommand}"
+                        Margin="0,20,0,0" />
+
+                <Button Grid.Column="1"
+                        Text="Submit"
+                        Style="{StaticResource ButtonOutline}"
+                        FontSize="Medium"
+                        IsEnabled="{Binding IsNotBusy}"
+                        HeightRequest="50"
+                        WidthRequest="150"
+                        Command="{Binding UpdateUserCommand}"
+                        Margin="0,20,0,0" />
+
+            </Grid>
             <Button Grid.Column="1"
-                    Text="Submit"
+                    Text="Sign Out"
                     Style="{StaticResource ButtonOutline}"
                     FontSize="Medium"
                     IsEnabled="{Binding IsNotBusy}"
                     HeightRequest="50"
-                    WidthRequest="150"
-                    Command="{Binding UpdateUserCommand}"
+                    WidthRequest="325"
+                    Command="{Binding SignOutUserCommand}"
+                    BorderColor="Red"
+                    TextColor="Red"
                     Margin="0,20,0,0" />
-
-        </Grid>
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

@@ -61,8 +61,7 @@
             </CollectionView>
         </RefreshView>
 
-        <Button x:Name="BtnRegister"
-                Text="Back"
+        <Button Text="Back"
                 HeightRequest="50"
                 FontSize="Medium"
                 Command="{Binding BackToMainMenuCommand}"
